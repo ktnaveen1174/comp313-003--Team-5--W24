@@ -12,6 +12,11 @@
  run this command: 
  python app.py
 
+ Request Header::::
+ Key = Content-Type
+ Value = application/json
+
+
 Sample Request Body::::
 {
   "symptoms": {
