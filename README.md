@@ -42,28 +42,5 @@ Sample Response:
     ]
 }
 
-Or If you run it on Visual Studio Code:
-1.In one terminal run: python app.py
-2.In another terminal :
-
-$headers = @{
-    "Content-Type" = "application/json"
-}
-
-$body = '{
-    "symptoms": {
-        "stomach_pain": "yes",
-        "acidity": "yes",
-        "ulcers_on_tongue": "no",
-        "vomiting": "no",
-        "cough": "yes",
-        "chest_pain": "no"
-    },
-    "days": 4
-}'
-
-$response = Invoke-WebRequest -Uri "http://127.0.0.1:5000/predict" -Method Post -Headers $headers -Body $body
-$response.Content
-
 
 
