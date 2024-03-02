@@ -9,6 +9,10 @@ from sklearn.model_selection import cross_val_score
 from sklearn.svm import SVC
 import csv
 import warnings
+
+import pickle
+from sklearn.tree import DecisionTreeClassifier
+
 warnings.filterwarnings("ignore", category=DeprecationWarning)
 
 
@@ -28,6 +32,37 @@ le = preprocessing.LabelEncoder()
 le.fit(y)
 y = le.transform(y)
 
+with open('label_encoder.pkl', 'wb') as file:
+    pickle.dump(le, file)
+
+# Load your datasets
+disease_descriptions_df = pd.read_csv('Dataset_classified\symptom_Description.csv')
+disease_precautions_df = pd.read_csv('Dataset_classified\symptom_precaution.csv')
+
+# Load descriptions from the CSV file into a dictionary
+disease_descriptions = {}
+with open('Dataset_classified\symptom_Description.csv', mode='r', encoding='utf-8') as csvfile:
+    reader = csv.reader(csvfile)
+    for row in reader:
+        disease = row[0].strip()
+        description = row[1].strip() if len(row) > 1 else ""
+        disease_descriptions[disease] = description
+
+# Optionally, pickle this dictionary for later use in your Flask app
+with open('disease_descriptions.pkl', 'wb') as f:
+    pickle.dump(disease_descriptions, f)
+
+# Load precautions from the CSV file into a dictionary
+disease_precautions = {}
+with open('Dataset_classified\symptom_precaution.csv', mode='r', encoding='utf-8') as csvfile:
+    reader = csv.reader(csvfile)
+    for row in reader:
+        disease = row[0].strip()
+        precautions = [precaution.strip() for precaution in row[1:] if precaution.strip()]
+        disease_precautions[disease] = precautions
+
+with open('disease_precautions.pkl', 'wb') as f:
+    pickle.dump(disease_precautions, f)
 
 x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.33, random_state=42)
 testx    = testing[cols]
@@ -42,6 +77,10 @@ clf = clf1.fit(x_train,y_train)
 scores = cross_val_score(clf, x_test, y_test, cv=3)
 # print (scores)
 print (scores.mean())
+
+# Save your model to a file
+with open('model.pkl', 'wb') as file:
+    pickle.dump(clf, file)
 
 
 model=SVC()
