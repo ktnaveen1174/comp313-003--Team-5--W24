@@ -44,3 +44,12 @@ Sample Response:
 
 
 
+
+**To Run the application:**
+
+1. **Start the backend server:** `node app.js`
+2. **In a new terminal, start the frontend:**
+   1. `cd client`
+   2. `npm run dev`
+
+
