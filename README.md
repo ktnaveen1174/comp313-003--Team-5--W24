@@ -45,7 +45,7 @@ Sample Response:
 
 
 
-**To Run the application:**
+**To Run the FrontEnd application:**
 
 1. **Start the backend server:** `node app.js`
 2. **In a new terminal, start the frontend:**
