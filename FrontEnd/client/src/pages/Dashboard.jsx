@@ -38,7 +38,7 @@ const Dashboard = () => {
   return (
     <div className='dashboard-main'>
       <h1>Dashboard</h1>
-      <p>Hi { data.msg }! </p>
+      <p> { data.msg }! </p>
       <Link to="/logout" className="logout-button">Logout</Link>
     </div>
   )
