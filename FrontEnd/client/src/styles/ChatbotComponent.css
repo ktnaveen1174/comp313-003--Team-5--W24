@@ -1,0 +1,72 @@
+/* Chatbot.css */
+
+/* Chatbot image button */
+.chatbot-image {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 100px; 
+  height: 100px; 
+  background-color: rgb(50, 174, 236);
+  border: 1px solid #0c2374; 
+  border-radius: 50%; 
+  cursor: pointer; 
+  transition: background-color 0.3s; 
+}
+
+.chatbot-image:hover {
+  background-color: #007bb5; 
+}
+
+
+.chatbot-container {
+  position: fixed;
+  bottom: 140px; 
+  right: 20px;
+  width: 300px; 
+  min-height: 100px; 
+  background-color: #a6dfe9; 
+  border: 2px solid #060606;
+  border-radius: 10px; 
+  box-shadow: 10px 10px 0px rgba(0, 0, 0, 0.1); 
+}
+
+
+.chatbot-header {
+  background-color: #9640d3; 
+  text-align: center;
+  color: #ffffff; 
+}
+.chatbot-body {
+  padding: 10px;
+  text-align: left;
+  font-size: 14px;
+  background-color: white; 
+  min-height: 100px; 
+  max-height: 300px;
+  overflow-y: auto; /* Scroll bar */
+}
+
+.chatbot-input{
+  padding: 1px;
+}
+.chatbot-input button {
+  
+  background-color: #111011; 
+  color: #ffffff; 
+  border: 3px solid black; 
+  padding: 8px 16px; 
+  border-radius: 30px; 
+  cursor: pointer; 
+
+  transition: color 500ms linear 0ms;
+ 
+}
+
+.chatbot-input button:hover {
+  background-color: #ffffff;
+  color:#060606;
+  
+
+  /* Darker background color on hover */
+}
