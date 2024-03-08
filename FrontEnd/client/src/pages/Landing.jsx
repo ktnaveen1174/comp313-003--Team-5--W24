@@ -1,16 +1,27 @@
-import React from 'react'
+import React, { useEffect } from "react";
 import "../styles/Landing.css";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 const Landing = () => {
-  return (
-    <div className='landing-main'>
-    <h1>Welcome to chatbot </h1>
-    <p>Please Login or Register to continue.</p>
-    <Link to="/login" className="landing-login-button">Login</Link>
-    <Link to="/register" className="landing-register-button">Register</Link>
-  </div>
-  )
-}
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, []);
 
-export default Landing
+  return (
+    <div className="landing-main">
+      <h1>Welcome to Healthbot </h1>
+      <p>Please Login or Register to continue.</p>
+      <Link to="/login" className="landing-login-button">
+        Login
+      </Link>
+      <Link to="/register" className="landing-register-button">
+        Register
+      </Link>
+    </div>
+  );
+};
+
+export default Landing;
