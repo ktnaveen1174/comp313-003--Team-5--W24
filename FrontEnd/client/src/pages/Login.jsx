@@ -8,17 +8,17 @@ import "../styles/Login.css";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
-import LottiePlayer from 'react-lottie-player';
+import LottiePlayer from "react-lottie-player";
 import Lottie from "lottie-react";
 import Animation from "../assets/animation.json";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const [ token, setToken ] = useState(JSON.parse(localStorage.getItem("auth")) || "");
+  const [token, setToken] = useState(
+    JSON.parse(localStorage.getItem("auth")) || ""
+  );
   const [animationData, setAnimationData] = useState(null);
   const navigate = useNavigate();
-
-
 
   const handleLoginSubmit = async (e) => {
     e.preventDefault();
@@ -35,7 +35,7 @@ const Login = () => {
           "http://localhost:3000/api/v1/login",
           formData
         );
-        localStorage.setItem('auth', JSON.stringify(response.data.token));
+        localStorage.setItem("auth", JSON.stringify(response.data.token));
         toast.success("Login successfull");
         navigate("/dashboard");
       } catch (err) {
@@ -48,16 +48,29 @@ const Login = () => {
   };
 
   useEffect(() => {
-    if(token !== ""){
+    if (token !== "") {
       toast.success("You already logged in");
       navigate("/dashboard");
     }
+  }, []);
+  useEffect(() => {
+    // Prevent scrolling once the page content ends
+    document.body.style.overflow = "hidden";
+    return () => {
+      // Re-enable scrolling when the component unmounts
+      document.body.style.overflow = "auto";
+    };
   }, []);
 
   return (
     <div className="login-main">
       <div className="login-left">
-      <Lottie animationData={Animation} loop={true} autoPlay={true} style={{ width: 300, height: 300 }} />
+        <Lottie
+          animationData={Animation}
+          loop={true}
+          autoPlay={true}
+          style={{ width: 300, height: 300 }}
+        />
       </div>
       <div className="login-right">
         <div className="login-right-container">
